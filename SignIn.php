@@ -1,6 +1,17 @@
 <?php 
 
-include 'Partials/_dbconnect.php';
+
+
+
+// generate capcha code
+
+
+
+// $rand_num = substr(md5(microtime()),rand(0,26),6);
+
+// $_SESSION['captcha_code'] = $rand_num;
+
+
 $login = false;
 $showError = false;
 
@@ -14,12 +25,23 @@ function test_input($data) {
   return $data;
 }
 
-if($_SERVER["REQUEST_METHOD"]  == "POST")
-{
+
+
+//echo $_SESSION['captcha_code'];
+
+include 'Partials/_dbconnect.php';
+
+
+if($_SERVER["REQUEST_METHOD"]  == "POST"){
+
+   
   
  
   $uname =  (test_input($_POST["uname"]));
   $password = test_input($_POST["pwd"]) ;
+//   $captcha = test_input($_POST["captcha"]) ;
+
+//   if( $captcha == $_SESSION['captcha_code']){
   
  //  $sql = " SELECT * FROM student WHERE  Student_Id = '$uname' and mob = '$password' ";
  $sql = " SELECT * FROM member WHERE binary uid = '$uname'  ";
@@ -37,10 +59,12 @@ if($_SERVER["REQUEST_METHOD"]  == "POST")
 
                 $login = true;
 
+                session_start();
+
+
                 $update_activity = "UPDATE member SET activity = '1' WHERE uid = '$uname' ";
                 $result = mysqli_query($conn, $update_activity);
 
-                session_start();
                 
                             $_SESSION['loggedin'] = true;
                             $_SESSION['uname'] = $uname;
@@ -68,6 +92,10 @@ else{
 
   $showError = " Invalid Credentials";
 }
+// }
+// else{
+//   $showError = " Invalid Captcha";
+// }
 }
 
 include 'Partials/_visit_count.php';
@@ -136,8 +164,8 @@ if($showError){
     ?>
     <script>
         swal({
-            title: "Failed to Login",
-            text: "<?php echo $showError; ?>",
+            title: "<?php echo $showError; ?>",
+            // text: " ",
             icon: "error",
             button: "Try Again",
         }).then(function() {
@@ -194,6 +222,14 @@ if($showError){
                                 <label for="pwd" class="font-weight-bold"> <i class="fa fa-lock"></i> Password:</label>
                                 <input type="password" class="form-control" id="pwd" name="pwd" required>
                             </div>
+                            <!-- <div class="form-group">
+                            <label for="uname" class="font-weight-bold">  Enter Captcha :</label>
+                            <label class="sr-only" for="Captcha">Captcha</label>
+                                    <div class="input-group">
+                                    <div class="input-group-addon" style="font-weight: bold; font-size:22px;"><?php //echo $rand_num; ?></div>
+                                    <input type="text" class="form-control" id="Captcha" name="captcha" placeholder="Enter Captcha" required>
+                            </div>
+                            </div> -->
                            
                             <div class="text-center">
                                 <button type="submit" class="btn btn-read"> Login Now</button>

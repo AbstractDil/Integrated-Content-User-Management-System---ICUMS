@@ -92,7 +92,7 @@ else{
                             $data = false;
                             $status = false;
 
-                            $sql = "SELECT * FROM `news`";
+                            $sql = "SELECT * FROM `news` ORDER BY Date_Time DESC";
                             $result = mysqli_query($conn, $sql);
                             $num = mysqli_num_rows($result);
                             if($num>0){
