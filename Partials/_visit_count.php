@@ -11,6 +11,7 @@ $query = " SELECT * FROM `visits`";
   if(!$result){
     die("Retriving Query Error<br>" .$query);
   }
+  
   $total_visitors = mysqli_num_rows($result);
 
   //echo $total_visitors;
@@ -55,9 +56,11 @@ $query = " SELECT * FROM `visits` WHERE visitor_ip = '$visitor_ip'";
   $result = mysqli_query($conn,$query);
 
   // checking query error 
+  
   if(!$result){
     die("Retriving Query Error<br>" .$query);
   }
+  
   $total_visitors = mysqli_num_rows($result);
   if($total_visitors < 1){
   $query =   "INSERT INTO visits (`visitor_ip`,`visit_date_time`) VALUES ( '$visitor_ip','$date')";

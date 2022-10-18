@@ -2,7 +2,7 @@
 
 
 
-$sql = "SELECT * FROM `notices` ORDER BY Date_Time DESC";
+$sql = "SELECT * FROM `notices`";
 $result = mysqli_query($conn, $sql);
 $num = mysqli_num_rows($result);
 if($num>0){

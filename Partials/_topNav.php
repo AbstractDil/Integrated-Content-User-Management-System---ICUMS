@@ -1,10 +1,7 @@
 <?php  
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
-    
   $loggedin= true;
-
-  
   $sql = " SELECT * FROM member WHERE uid = '$_SESSION[uname]' ";
 
                     
@@ -70,7 +67,7 @@ else{
                 <ul class="dropdown-menu">
 
                     <li>
-                        <a >  <span style="background-color:rgb(8, 187, 8);color:#fff; padding:5px; border-radius:12px;font-weight:bold;"><i class="fa fa-fw fa-user"></i>'.$role_name .'</span> </a>
+                        <a href="../profileInfo.php" >  <span style="background-color:rgb(8, 187, 8);color:#fff; padding:5px; border-radius:12px;font-weight:bold;"><i class="fa fa-fw fa-user"></i>'.$role_name .'</span> </a>
                     </li>
                   
                     <li><a href="javascript:void(0)"   style="margin-top:3px;" onclick="Logout()"> <span style="background-color:crimson;color:#fff; padding:6px; border-radius:12px;font-weight:bold;"><i class="fa fa-fw fa-power-off"></i> Logout</span></a></li>

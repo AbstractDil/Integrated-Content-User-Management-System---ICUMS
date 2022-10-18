@@ -149,7 +149,11 @@
 
                 <h2 class="title-median">MathHub-Combined</h2>
                 <p class="title-5"><i class='fa fa-envelope text-white'></i><b class="text-white"> Support Email</b> <a  href="mailto:nandysagar@yahoo.com"
-                    >nandysagar@yahoo.com</a></p>
+                    >nandysagar@yahoo.com</a>
+                    <br>
+                    <br>
+                   <b><i class="fa fa-eye"></i> Total visitor  :</b>  <?=  $visit_count; ?>
+                    </p> 
                 
                 
               </div>

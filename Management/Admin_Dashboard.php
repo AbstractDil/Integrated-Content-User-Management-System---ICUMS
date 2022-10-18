@@ -110,8 +110,8 @@ $second_num = mysqli_num_rows($second_result);
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
    
     <title><?php echo $role_name; ?> Dashboard - MATHHUB COMBINED</title>
@@ -120,9 +120,11 @@ $second_num = mysqli_num_rows($second_result);
 <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
-<div id="preloader">
+    
+    <div id="preloader">
   <div id="status">&nbsp;</div>
-</div>
+</div> 
+
 <section>
 <div id="throbber" style="display:none; min-height:120px;"></div>
 <div id="noty-holder"></div>
@@ -245,7 +247,7 @@ $second_num = mysqli_num_rows($second_result);
 
                           <?php
 
-                          $sql = "SELECT * FROM `news` ORDER BY start_date DESC ";
+                          $sql = "SELECT * FROM `news` ORDER BY Date_Time DESC";
                           $result = mysqli_query($conn, $sql);
 
                           $num = mysqli_num_rows($result);
@@ -322,7 +324,7 @@ else {
                           <div class="panel-body">
 
                               <?php
-    $sql = "SELECT * FROM `notices` ORDER BY Date_Time DESC";
+    $sql = "SELECT * FROM `notices`";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if($num>0){
@@ -401,9 +403,6 @@ else {
 
 
 
-
-
-
                 
             </div>
             <!-- /.row -->
@@ -414,7 +413,6 @@ else {
     <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
 </section>
-
 
 <script src="../js/loader.js"></script>
 

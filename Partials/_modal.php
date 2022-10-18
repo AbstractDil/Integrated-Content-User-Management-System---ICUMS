@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body">
       <?php
-    $sql = "SELECT * FROM `notices`";
+    $sql = "SELECT * FROM `notices` ORDER BY Date_Time DESC";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if($num>0){
@@ -26,7 +26,7 @@
       ?>
 
 <div class="alert alert-danger">
-<strong><span class="label label-danger  blink">New</span> <a href="<?= $row['notice_link']; ?>" class="text-danger"><?= $row['notice_title']; ?></a> </strong> <span class="label label-info">Posted On <?= $row['Date_Time']; ?></span> 
+<strong ><span class="label label-danger  blink">New</span> <a href="<?= $row['notice_link']; ?>" class="text-danger"><?= $row['notice_title']; ?></a> <span class="label label-info">Posted On <?= $row['Date_Time']; ?></span>  </strong>
 </div>
 
       <?php
