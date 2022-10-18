@@ -1,5 +1,6 @@
 <?php
 include '../Partials/_dbconnect.php';
+
 include '../Partials/_visit_count.php';
 
 session_start();
@@ -82,7 +83,12 @@ else{
                                     <?php echo $date; ?>
                                 </h5>
                                 <hr>
-                                
+                      <?php
+
+                      if($role==1){
+                        ?>
+
+                      
                                 <div class=" table-responsive" style="padding:12px ;">
                                     <table class="table table-bordered table-hover" id="ipTable">
                                         <thead class="bg-primary">
@@ -109,6 +115,12 @@ else{
                                         </tbody>
                                     </table>
                                 </div>
+                                <?php
+                      }
+                      
+                      
+
+                      ?>
                     </div>
 
             

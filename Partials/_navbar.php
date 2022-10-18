@@ -55,7 +55,7 @@ else{
            
           </ul>
         </li>
-<li><a href="index.php" class="text-white"><span class="glyphicon glyphicon-bullhorn"></span> Latest News</a></li>
+
 
       </ul>
      

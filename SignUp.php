@@ -172,6 +172,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 }
    
   
+include 'Partials/_dbconnect.php'; 
   
   
 include 'Partials/_visit_count.php';
@@ -232,7 +233,7 @@ if($errorMSG){
   </p>
 
 </div>
-<?php include 'Partials/_navbar.php'; ?>
+
 
 
 
@@ -253,6 +254,7 @@ if($errorMSG){
          <div class="alert alert-info border-1 mt-3">
                    <h3 class="mb-3  font-weight-bold"> <i class="fa fa-user-plus"></i> Create Account</h3>
                    <hr class="hr-info">
+
                         <form method = "POST" id="signup-form">
                             <input type="hidden" name="Date_Time" value="<?php echo $dt; ?>">
                             <input type="hidden" name="User_Id" value="<?php echo $reg_id; ?>">
@@ -260,25 +262,25 @@ if($errorMSG){
 
                         <div class="form-group">
                                 <label for="uname" class="font-weight-bold"><i class="fa fa-user-circle"></i> Full Name:</label>
-                                <input type="text" class="form-control" id="uname"  name="uname" required>
+                                <input type="text" class="form-control" id="uname" minlength="5" maxlength="50"  name="uname" pattern="[a-zA-Z ]{5,50}$" title="Minimum length is 5 , Only letters are allowed" required>
                                 <span class="nameCheck"></span>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="font-weight-bold"><i class="fa fa-envelope"></i> Email address:</label>
-                                <input type="email" class="form-control" id="email" style="text-transform:lowercase ;" name="uemail" required>
+                                <input type="email" class="form-control" id="email" style="text-transform:lowercase ;" name="uemail" pattern="[a-zA-Z0-9]{5,}+@[a-z]+\.[a-z]{5}.[a-z]{3}$" minlength="12" maxlength="50" required>
                                 <div class="text-muted">** We'll send you a confirm mail  to this email.</div> 
                                 <span class="emailCheck"></span>
                             </div>
                             <div class="form-group">
                                 <label for="pwd" class="font-weight-bold"> <i class="fa fa-lock"></i> Create Password:</label>
-                                <input type="password" class="form-control" id="pwd" name="upwd" required>
-                                <div class="text-muted">** Don't share your password with anyone else.</div> 
+                                <input type="password" class="form-control" id="pwd" name="upwd" minlength="8" maxlength="50" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" title="Must contain at least one number and one uppercase and lowercase letter and atleast 8 characters." required>
+                                <div class="text-muted">** Only letters and numbers are allowed.</div> 
 
                                 <span class="pwdCheck"></span>
                             </div>
                             <div class="form-group">
                                 <label for="cpwd" class="font-weight-bold"> <i class="fa fa-lock"></i> Confirm Password:</label>
-                                <input type="password" class="form-control" id="cpwd" name="ucpwd" required>
+                                <input type="password" class="form-control" id="cpwd" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" title="Must contain at least one number and one uppercase and lowercase letter and atleast 8 characters." name="ucpwd" required>
                                 <span class="cpwdCheck"></span>
                             </div>
 
@@ -297,7 +299,6 @@ if($errorMSG){
                             </div>
 
                         </form>
-
                         <p class="text-center pt-1 font-weight-bold">
                             Already have an account? <a href="SignIn.php " class="text-danger">Login</a>
                         </p>
@@ -321,201 +322,7 @@ if($errorMSG){
             
                 <?php include 'Partials/_footer.php' ?>
                 <script src="js/loader.js"></script>
-                <script>
-
-                    $(document).ready(function(){
-
-
-                        $(".nameCheck").hide();
-                        $(".emailCheck").hide();
-                        $(".pwdCheck").hide();
-                        $(".cpwdCheck").hide();
-
-
-                        var error_name = true;
-                        var error_email = true;
-                        var error_pwd = true;
-                        var error_cpwd = true;
-
-                        $("#uname").keyup(function(){
-                            check_name();
-                        });
-
-                        $("#email").keyup(function(){
-                            check_email();
-                        });
-
-                        $("#pwd").keyup(function(){
-                            check_pwd();
-                        });
-
-                        function check_name(){
-                            var name = $("#uname").val().length;
-                            if(name < 5){
-                                $(".nameCheck").show();
-                                $(".nameCheck").html("Name should be atleast 5 characters");
-                                $(".nameCheck").css("color","red");
-                                error_name = false;
-                                return false;
-                            }else{
-                                $(".nameCheck").hide();
-                            }
-
-                            var name_val = $("#uname").val();
-                            var reg = /^[a-zA-Z ]+$/;
-                           
-                            if(reg.test(name_val)){
-                                $(".nameCheck").hide();
-                            }else{
-                                $(".nameCheck").show();
-                                $(".nameCheck").html("Name should contain only alphabets");
-                                $(".nameCheck").css("color","red");
-                                error_name = false;
-                                return false;
-                            }
-
-                            var name_empty = $("#uname").val();
-                            if(name_empty.length == ""){
-                                $(".nameCheck").show();
-                                $(".nameCheck").html("Name should not be empty");
-                                $(".nameCheck").css("color","red");
-                                error_name = false;
-                                return false;
-                            }else{
-                                $(".nameCheck").hide();
-                            }
-                        }
-
-                        function check_email(){
-                            var email = $("#email").val().length;
-                            if(email < 14){
-                                $(".emailCheck").show();
-                                $(".emailCheck").html("Invalid email");
-                                $(".emailCheck").css("color","red");
-                                error_email = false;
-                                return false;
-                            }
-                            else{
-                                $(".emailCheck").hide();
-                            }
-                         var email_val = $("#email").val();
-                            var reg = /^([a-zA-Z0-9]+)@([a-z]+).([a-z]{3,5})(.[a-z]{3,5})?$/;
-                            if(reg.test(email_val)){
-                                $(".emailCheck").hide();
-                            }else{
-                                $(".emailCheck").show();
-                                $(".emailCheck").html("Invalid email");
-                                $(".emailCheck").css("color","red");
-                                error_email = false;
-                                return false;
-                            }
-
-                            var email_empty = $("#email").val();
-
-                            if(email_empty.length == "" ){
-                                $(".emailCheck").show();
-                                $(".emailCheck").html("Email should not be empty");
-                                $(".emailCheck").css("color","red");
-                                error_email = false;
-                                return false;
-                            }else{
-                                $(".emailCheck").hide();
-                            }
-
-
-                        }
-
-                        function check_pwd(){
-                            var pwd = $("#pwd").val().length;
-
-                           
-                            if(pwd < 8){
-                                $(".pwdCheck").show();
-                                $(".pwdCheck").html("Please enter at least 8 characters");
-                                $(".pwdCheck").css("color","red");
-                                error_pwd = false;
-                                return false;
-                            }else{
-                                $(".pwdCheck").hide();
-                            }
-
-                            var pwd_empty = $("#pwd").val();
-                            if(pwd_empty.length == "" ){
-                                $(".pwdCheck").show();
-                                $(".pwdCheck").html("Password should not be empty");
-                                $(".pwdCheck").css("color","red");
-                                error_pwd = false;
-                                return false;
-                            }else{
-                                $(".pwdCheck").hide();
-                            }
-
-                            var pwd_val = $("#pwd").val();
-                            var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-                            if(reg.test(pwd_val)){
-                                $(".pwdCheck").hide();
-                            }else{
-                                $(".pwdCheck").show();
-                                $(".pwdCheck").html("Password should contain atleast one uppercase, one lowercase and one digit");
-                                $(".pwdCheck").css("color","red");
-                                error_pwd = false;
-                                return false;
-                            }
-                        }
-
-                      var cpwd = $("#cpwd").val();
-                      var reg =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-                        if(reg.test(cpwd)){
-                            $(".cpwdCheck").hide();
-                        }else{
-                            $(".cpwdCheck").show();
-                            $(".cpwdCheck").html("Password should contain atleast one uppercase, one lowercase and one digit");
-                            $(".cpwdCheck").css("color","red");
-                            error_cpwd = false;
-                            return false;
-                        }
-
-                        if(cpwd != pwd){
-                            $(".cpwdCheck").show();
-                            $(".cpwdCheck").html("Password does not match");
-                            $(".cpwdCheck").css("color","red");
-                            error_cpwd = false;
-                            return false;
-
-
-                    }
-
-                    if(cpwd = " "){ 
-                        $(".cpwdCheck").show();
-                        $(".cpwdCheck").html("Password should not be empty");
-                        $(".cpwdCheck").css("color","red");
-                        error_cpwd = false;
-                        return false;
-                    }else{
-                        $(".cpwdCheck").hide();
-                    }
-
-                        $("#submit").click(function(){
-                            error_name = true;
-                            error_email = true;
-                            error_pwd = true;
-                            error_cpwd = true;
-
-                            check_name();
-                            check_email();
-                            check_pwd();
-                            check_cpwd();
-
-                            if(error_name == true && error_email == true && error_pwd == true && error_cpwd == true){
-                                return true;
-                            }else{
-                                return false;
-                            }
-                        });
-
-                    });
-
-                </script>
+               
             </body>
             
             </html>

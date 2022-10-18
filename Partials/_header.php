@@ -1,6 +1,8 @@
 
 <?php  
 
+
+
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
   $loggedin= true;
 
@@ -29,6 +31,7 @@ else{
                 <div class="col-md-2 mt-3 text-right">
 
                 <?php
+
                 if($loggedin){
 
                     $sql = " SELECT * FROM member WHERE uid = '$_SESSION[uname]' ";
@@ -42,6 +45,9 @@ else{
                   <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><b></b> Wecome <br> <i class ="fa fa-user-circle"></i> '.$row['name'].'</b>
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
+                    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                  <li ><a href="StudyMaterials.php" ><i class="fa fa-graduation-cap"></i> Study Materials</a> </li>
+
                     <li ><a href="profileInfo.php" ><i class="fa fa-gear"></i> Profile Settings</a> </li>
                     <li><a href="javascript:void(0)" onclick="confirm()" ><span class="label label-danger text-white" style="font-size:15px;"> <i class="fa fa-sign-out"></i> Sign out </span></a></li>
                     

@@ -13,6 +13,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
 else{
     $loggedin = true;
 
+    include '../Partials/_dbconnect.php' ;
     
     $sql = " SELECT * FROM member WHERE uid = '$_SESSION[uname]' ";
 
@@ -40,7 +41,7 @@ else{
 }
 
 
-include '../Partials/_dbconnect.php' ;
+
 
 $update = false;
 
@@ -65,6 +66,8 @@ if(isset($_POST['changePassword'])){
      if($passwordEdit == $cpasswordEdit){
 
    $hash_passwordEdit = password_hash($cpasswordEdit, PASSWORD_DEFAULT);
+
+   include '../Partials/_dbconnect.php' ;
 
     $sql = " UPDATE `member` SET `password` = '$hash_passwordEdit' WHERE `member`.`uid` = '$uid' ";
     
@@ -92,7 +95,7 @@ if(mysqli_num_rows($result) > 0){
         $from = 'no-reply@nandysagar.in';
         $name = ' MATHHUB COMBINED PORTAL';  
         $subj =  ' LOGIN PASSWORD CHANGED ';
-        $msg = ' <h3> Dear '.$row['name'].', </h3> <br> <p> Your password has been changed. </p> <br> <p> If you did not change your password, please contact us immediately. </p> <br> <p> Thank you. </p> <br> <p> Regards, </p> <br> <p> MATHHUB COMBINED PORTAL </p> ';
+        $msg = ' <h3> Dear '.$row['name'].', </h3> <br> <p> Your password has been changed. <br> New password is '.$ $cpasswordEdit.' </p> <br> <p> If you did not change your password, please contact us immediately. </p> <br> <p> Thank you. </p> <br> <p> Regards, </p> <br> <p> MATHHUB COMBINED PORTAL </p> ';
     
          
         $error=member($to,$from, $name ,$subj, $msg);
@@ -272,25 +275,4 @@ if($showAlert){
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,7 +1,10 @@
 <?php  
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    
   $loggedin= true;
+
+  
   $sql = " SELECT * FROM member WHERE uid = '$_SESSION[uname]' ";
 
                     

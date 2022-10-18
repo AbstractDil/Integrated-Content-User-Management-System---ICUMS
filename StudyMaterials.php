@@ -76,7 +76,10 @@ include 'Partials/_visit_count.php';
 </div>
 <?php 
 
-include 'Partials/_navbar.php' ;
+// include 'Partials/_navbar.php' ;
+
+ include 'Partials/_modal.php';
+
 
 ?>
 
@@ -84,65 +87,12 @@ include 'Partials/_navbar.php' ;
 
         <div class="row">
 
-          <div class="col-md-3">
-            <div class="panel panel-default">
-
-            <div class="panel-heading">
-             <b><i class="fa fa-link"></i> Important Links</b>
-            </div>
-            <div class="panel-body font-weight-bold">
-
-    <a href="index.php"  class="text-danger"> <i class="fa fa-home"></i> Go to home</a><br>
-   <a href="StudyMaterials.php"  class="text-danger"> <i class="fa fa-graduation-cap"></i> Study Materials for PRO user</a> <br>
-
-
-   <a href="https://mathhubcombined.vercel.app/"  class="text-danger"> <i class="fa fa-graduation-cap"></i> Free Study Materials</a> <br>
-
-            </div>
-
-
-            </div>
-            <div class="panel panel-danger">
-    <div class="panel-heading bg-danger">
-      <h3 class="panel-title"> <i class="fa fa-bullhorn"></i> <b> Announcements </b> </h3>
-    </div>
-    <div class="panel-body">
-
-   
-    <?php
-    $sql = "SELECT * FROM `notices`";
-    $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
-    if($num>0){
-    
-    
-       
-    while($row = mysqli_fetch_assoc($result)){
-    
-      ?>
-
-<div class="alert alert-danger">
-<strong><span class="label label-danger  blink">New</span> <a href="<?= $row['notice_link']; ?>" class="text-danger"><?= $row['notice_title']; ?></a> </strong> <span class="label label-info">Posted On <?= $row['Date_Time']; ?></span> 
-</div>
-
-      <?php
-     
-    
-    }
-    }
-  
-    ?>
-</div>
-</div>
-          </div>
-        
+         
 
 
 
 
-
-
-            <div class=" col-md-9">
+            <div class="col-md-8 col-md-offset-2">
             <div class="alert alert-danger fs-1" style="padding: 0; padding-top:2px;">
             <marquee behavior="alternate" scrolldelay="4" width="100%">
 
@@ -181,7 +131,7 @@ include 'Partials/_navbar.php' ;
     </thead>
     <tbody>
       <?php 
-        $sql = "SELECT * FROM `products`";
+        $sql = "SELECT * FROM `products` ORDER BY Date_Time DESC";
         $result = mysqli_query($conn, $sql);
         $sno = 0;
         while($row = mysqli_fetch_assoc($result)){

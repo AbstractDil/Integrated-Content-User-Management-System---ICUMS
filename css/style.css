@@ -199,6 +199,13 @@ border-top-color: #003;*/
   background: #193b68; 
 }
 
+h5{
+  font-size: 17px !important;
+  
+  
+  font-family: Georgia, 'Times New Roman';
+}
+
 .text-white{
   color: #fff !important;
 }

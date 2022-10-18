@@ -16,3 +16,19 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 <script src="js/onSubmit.js"></script>
+<!-- <script>
+    $(document).ready(function(){
+        $("#myModal").modal('show',1000);
+    });
+</script> -->
+
+
+<script>
+  $(window).on('load',function(){
+    var delayMs = 1500; // delay in milliseconds
+
+    setTimeout(function(){
+        $('#myModal').modal('show');
+    }, delayMs);
+});   
+</script>

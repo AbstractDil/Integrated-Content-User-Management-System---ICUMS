@@ -2,16 +2,6 @@
 
 
 
-
-// generate capcha code
-
-
-
-// $rand_num = substr(md5(microtime()),rand(0,26),6);
-
-// $_SESSION['captcha_code'] = $rand_num;
-
-
 $login = false;
 $showError = false;
 
@@ -193,7 +183,7 @@ if($showError){
   </p>
 
 </div>
-<?php include 'Partials/_navbar.php' ?>
+
 
 
     <div class="container  my-3  ">
@@ -205,22 +195,25 @@ if($showError){
 
 
 
-            <div class=" col-md-6 col-md-offset-3">
+            <div class=" col-sm-6 col-md-4 col-md-offset-4">
               
 
                     
 
                     <div class="alert alert-info border-1 mt-3">
-                   <h3 class="mb-3  font-weight-bold">Login to your account</h3>
+                   <div class="text-center">
+                    <i class="fa fa-user-circle" style="font-size:6rem;"></i>
+                   <h3 class="mb-3  font-weight-bold">Login to continue</h3>
+                   </div>
                    <hr class="hr-info">
                         <form method = "POST">
                             <div class="form-group">
                                 <label for="uname" class="font-weight-bold"> <i class="fa fa-user"></i>  Member Id :</label>
-                                <input type="text" class="form-control" id="uname" name="uname" maxlength="12" required>
+                                <input type="text" class="form-control" id="uname" name="uname" minlength="12" maxlength="12" required>
                             </div>
                             <div class="form-group">
                                 <label for="pwd" class="font-weight-bold"> <i class="fa fa-lock"></i> Password:</label>
-                                <input type="password" class="form-control" id="pwd" name="pwd" required>
+                                <input type="password" minlength="5" class="form-control" id="pwd" name="pwd" required>
                             </div>
                             <!-- <div class="form-group">
                             <label for="uname" class="font-weight-bold">  Enter Captcha :</label>
@@ -232,14 +225,14 @@ if($showError){
                             </div> -->
                            
                             <div class="text-center">
-                                <button type="submit" class="btn btn-read"> Login Now</button>
+                                <button type="submit" class="btn btn-read" onclick="showLoader()"> Login Now</button>
                             </div>
 
 
 
                         </form>
                  
-                        <p class="text-center pt-1 font-weight-bold text-danger"> 
+                        <p class="text-center pt-1 font-weight-bold "> 
 
                           Donot have an account? <a href="SignUp.php" class="text-danger">Sign Up</a>
                     </p>
