@@ -13,9 +13,9 @@
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
-<script src="js/onSubmit.js"></script>
+<script src="./js/sweetalert.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script> -->
+<!-- <script src="js/onSubmit.js"></script> -->
 
 <!-- <script>
     $(document).ready(function(){
@@ -26,7 +26,7 @@
 
 <script>
   $(window).on('load',function(){
-    var delayMs = 1500; // delay in milliseconds
+    var delayMs = 2000; // delay in milliseconds
 
     setTimeout(function(){
         $('#myModal').modal('show');

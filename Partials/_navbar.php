@@ -1,33 +1,6 @@
 
 
-<?php  
 
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
-  $loggedin= true;
-  $sql = " SELECT * FROM member WHERE uid = '$_SESSION[uname]' ";
-
-  $result = mysqli_query($conn,$sql);
-
-  while($row = mysqli_fetch_assoc($result)){
-    $role = $row['role'];
-    $name = $row['name'];
-
-    if($role == 1){
-      $role_name = "Admin";
-    }
-    else{
-      $role_name = "Moderator";
-    }
-}
-}
-
-   
-
-else{
-  $loggedin = false;
-}
-
-?>
 
 
 <nav class="navbar navbar-inverse border-0">
@@ -68,7 +41,7 @@ else{
           ?>
 
 <li class="dropdown">
-          <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle"></i> <?php echo $name; ?>  <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle"></i> <?php echo $uname; ?>  <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li ><a href="profileInfo.php" ><i class="fa fa-gear"></i> Profile Settings</a> </li>
                     <li><a href="javascript:void(0)" onclick="confirm()" ><span class="label label-danger text-white" style="font-size:15px;"> <i class="fa fa-sign-out"></i> Sign out </span></a></li>

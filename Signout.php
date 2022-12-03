@@ -14,7 +14,7 @@ session_destroy();
 ?>
 <script>
 
-  window.location.href="SignIn.php";
+  window.location.href="index.php";
 </script>
   
 <?php

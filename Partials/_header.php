@@ -2,6 +2,7 @@
 <?php  
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+
   $loggedin= true;
 
   
@@ -10,6 +11,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
 }
 else{
   $loggedin = false;
+
 }
 ?>
 
@@ -44,7 +46,7 @@ else{
                   echo '
 
                   <div class="dropdown">
-                  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><b></b> Wecome <br> <i class ="fa fa-user-circle"></i> '.$row['name'].'</b>
+                  <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><b></b> Wecome <br> <i class ="fa fa-user-circle"></i> '.$row['name'].'</b>
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                   <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
@@ -71,7 +73,7 @@ else{
         }
                 }
                 else{
-                  echo '<a href="SignIn.php" class="btn btn-warning btn-sm"> <i class="fa fa-mortar-board"></i> StudyMaterials</a>';
+                  echo '<a href="SignIn.php" class="btn btn-warning "> <i class="fa fa-lock"></i> Member Login </a>';
                 }
                   
                 // <a href="StudyMaterials.php" class="btn btn-warning"><i class="fa fa-mortar-board"></i> Study Materials</a>

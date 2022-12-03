@@ -1,35 +1,10 @@
 <?php
 
+
+
 include 'Partials/_dbconnect.php';
 
-session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
-?>
-<script>
-  window.location.href = "SignIn.php";
-</script>
-<?php
-    exit;
-}
-else{
-  
-  $sql = "SELECT * FROM `member` WHERE `uid` = '$_SESSION[uname]'";
-
-  $result = mysqli_query($conn, $sql);
-
-     while($row = mysqli_fetch_assoc($result)){
-
-         $uid = $row['uid'];
-         $uname = $row['name'];
-         $email = $row['email'];
-        $role = $row['role'];
-     }
-
-     
-
-
-}
-
+session_start() ;
 
 
 include 'Partials/_visit_count.php';
@@ -55,6 +30,7 @@ include 'Partials/_visit_count.php';
         <div id="status">&nbsp;</div>
     </div>
     <?php include 'Partials/_header.php' ?>
+    
     <div class="topnav">
 
         <p class=' text-center topnav-title'>
@@ -69,8 +45,12 @@ include 'Partials/_visit_count.php';
         </p>
 
     </div>
+
+
     <?php
-   // include 'Partials/_navbar.php';
+    // include 'Partials/_navbar.php';
+
+    
      include 'Partials/_modal.php';
 
     ?>

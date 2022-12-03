@@ -5,7 +5,7 @@
 $login = false;
 $showError = false;
 
- sleep(1);
+ // sleep(1);
 //  $showError = false;
 
 function test_input($data) {
@@ -235,6 +235,10 @@ if($showError){
                         <p class="text-center pt-1 font-weight-bold "> 
 
                           Donot have an account? <a href="SignUp.php" class="text-danger">Sign Up</a>
+                    </p>
+                    <p class="text-center pt-1 font-weight-bold "> 
+
+                         Forget Password ? <a href="forgetPassword.php" class="text-danger">Change Now</a>
                     </p>
 
 
