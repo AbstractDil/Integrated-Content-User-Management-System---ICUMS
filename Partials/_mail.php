@@ -9,16 +9,16 @@ function member($to, $from, $from_name, $subject, $body)
         $mail->SMTPAuth = true; 
  
         $mail->SMTPSecure = 'ssl'; 
-        $mail->Host = 'mail.nandysagar.in';
+        $mail->Host = 'mail.hostname.in';
         $mail->Port = '465';  
-        $mail->Username = 'no-reply@nandysagar.in';
-        $mail->Password = '%Reply@2035%';   
+        $mail->Username = 'no-reply@hostname.in';
+        $mail->Password = 'Password';   
    
    //   $path = "reseller.pdf";
    //   $mail->AddAttachment($path);
    
         $mail->IsHTML(true);
-        $mail->From='no-reply@nandysagar.in';
+        $mail->From='no-reply@hostname.in';
         $mail->FromName=$from_name;
         $mail->Sender=$from;
         $mail->AddReplyTo($from, $from_name);
